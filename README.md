@@ -23,10 +23,11 @@ Features:
 
   
   ## Technologies
-  -Vanilla JS DOM manipulation to insert graphs
-  -D3 data visualation library
-  -HTML for static elements on the page
-  -CSS for the html elements and general dom layout
+  - Vanilla JS DOM manipulation to insert graphs
+  - D3 data visualation library
+  - HTML for static elements on the page
+  - CSS for the html elements and general dom layout
+  - Strava api 
   
   ## wireframe
   <p align="center">
