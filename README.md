@@ -35,16 +35,18 @@ Features:
   </p>
   
   ## Implementation Timeline
-  
+  ### Days 1 - 2
   Phase 1: Rendering
-  - Get connected to the Strava api and parse 1 piece of data
-  - Render a graph 
+  - Get connected to the Strava api and retriece 1 slice of data (day 1)
+  - Render a graph (day 2)
   
+  ### Days 3 - 4
   Phase 2: Build out basic data
-  - Add multiple data fields to the graph by sport
-  - Include 4 different sport types with their own graph (running, biking, swimming, rowing)
+  - Add multiple data fields to the graph by sport (day 3)
+  - Include 4 different sport types with their own graph (running, biking, swimming, rowing) (day 4)
   
-  Phase 3: Drill down data
-  - Allow a user to slice and dice the data with drop downs for gender, location, devide used
+  ### Day 5
+  Phase 3: Drill down data 
+  - Allow a user to slice and dice the data with drop downs for gender, location, devide used (day 5)
   
  
