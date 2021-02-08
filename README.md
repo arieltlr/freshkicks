@@ -15,10 +15,10 @@ Features:
   - add animation to the figure/person/doll
   
   ## Technologies
-  -HTML elements for the outfit and pattern options (always on the screen)
-  -Vanilla js for the conditionally rendered buttons
-  -html 5 and canvas for the pattern animation and eventual dance move and drag and drop feature
-  -CSS for the html elements and general dom layout
+  - HTML elements for the outfit and pattern options (always on the screen)
+  - Vanilla js for the conditionally rendered buttons
+  - html 5 and canvas for the pattern animation and eventual dance move and drag and drop feature
+  - SCSS for the html elements and general dom layout
   
   ## wireframe
   <p align="center">
