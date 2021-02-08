@@ -23,6 +23,26 @@ Features:
   
   ## wireframe
   <p align="center">
-  <img src="https://github.com/arieltlr/freshkicks/wireframe/Homepage.png" />
+  <img src="https://github.com/arieltlr/freshkicks/blob/main/wireframe/Homepage.png" />
   </p>
+  
+  ## Implementation Timeline
+  
+  Phase 1: Rendering
+  - Create a person object with a blank white outfit
+  - Create a static pattern and render it on the screen 
+  - CSS style the "stage" area
+  
+  Phase 2: Drag and drop
+  - Add functionality to drag and drop the pattern onto the clothing item target
+  - Pattern takes the shape of the clothing item
+  
+  Phase 3: Animation
+  - The pattern on the clothing item is animated and moves when it is dropped onto the clothing item
+  - The person does a dance move when all of their clothing items are animated
+  
+  
+  
+  
+  A Note to the TA reviewing this - I am really torn about doing this project or doing a data visualization. I am really interested in the strava/ fitbit API. My other project idea was to look at the days people work out and show human tendencies to workout depending on if the miss monday, then miss monday and tuesday, then monday, tuesday and wednesday etc. I could build off that project by looking at how activity wanes throughout the month and then throughout the year. I chose this "paper doll" project because I thought it might be more unique, but I am still on the fence. Can you help me decide, having seen a lot more projects than I have? 
   
