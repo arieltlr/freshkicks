@@ -30,7 +30,7 @@ Features:
   
   ## wireframe
   <p align="center">
-  <img src="https://github.com/arieltlr/freshkicks/blob/main/wireframe/Homepage.png" />
+  <img src="https://github.com/arieltlr/freshkicks/blob/main/wireframe/running-page.png" />
   </p>
   
   ## Implementation Timeline
