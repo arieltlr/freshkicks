@@ -15,7 +15,6 @@ Features:
   - add animation to the figure/person/doll
   
   ## Technologies
-  To be totally honest I am not sure how this is all going to play out, but here's my initial idea for architecture
   -HTML elements for the outfit and pattern options (always on the screen)
   -Vanilla js for the conditionally rendered buttons
   -html 5 and canvas for the pattern animation and eventual dance move and drag and drop feature
