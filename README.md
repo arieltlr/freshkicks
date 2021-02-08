@@ -1,24 +1,31 @@
 ## Background
 
-Fresh kicks is an interactive animation project. It is most similar to the kids toy, paper doll. When you open the project there is set of drawn "dolls" to choose from wearing various all white outfits. The user can choose a pattern from a predetermined set and drag them onto the "doll's" clothes. When the pattern is dropped onto the doll, the pattern becomes animated. for instance, if one pattern consisted of palm trees, the tree trunks might start swaying. 
-
-Eventually I'd like the doll to do a dance move when all the blank white of their original outfit is covered in patterns. 
+Fresh kicks is a workout data visualization project. User will be able to scroll between graphs of different workout types. Each workout will show stats for that workout type. 
+Example stats: 
+- Average workout time
+- Average workout times / week
+- Average elevation gain
+- number of races / year (some sports have this data and some do not)
+The user can breakdown the data for each sport by: 
+- gender
+- state
+- workouts recorded with a device versus self reported
 
 ## MVPs
-This is an animation project where you can choose the patterns for a persons outfit. 
+This is a workout data visualization project. 
 Features: 
-  - Render a person figure with all white outfit
-  - render at least one pattern option that has animation built in after it has been dropped onto the person target
-  - render a visually appealing area for the person to be center state
-  - add additional outfit options
-  - add additional pattern options
-  - add animation to the figure/person/doll
+  - Connect into strava api
+  - Render a graph
+  - Graph has animation
+  - allow user to drill into data with different dropdown selectors
+  - scroll to see stats for different sports
+  - Each sport includes a visually appealing icon / picture
+
   
   ## Technologies
-  To be totally honest I am not sure how this is all going to play out, but here's my initial idea for architecture
-  -HTML elements for the outfit and pattern options (always on the screen)
-  -Vanilla js for the conditionally rendered buttons
-  -html 5 and canvas for the pattern animation and eventual dance move and drag and drop feature
+  -Vanilla JS DOM manipulation to insert graphs
+  -D3 data visualation library
+  -HTML for static elements on the page
   -CSS for the html elements and general dom layout
   
   ## wireframe
@@ -29,20 +36,14 @@ Features:
   ## Implementation Timeline
   
   Phase 1: Rendering
-  - Create a person object with a blank white outfit
-  - Create a static pattern and render it on the screen 
-  - CSS style the "stage" area
+  - Get connected to the Strava api and parse 1 piece of data
+  - Render a graph 
   
-  Phase 2: Drag and drop
-  - Add functionality to drag and drop the pattern onto the clothing item target
-  - Pattern takes the shape of the clothing item
+  Phase 2: Build out basic data
+  - Add multiple data fields to the graph by sport
+  - Include 4 different sport types with their own graph (running, biking, swimming, rowing)
   
-  Phase 3: Animation
-  - The pattern on the clothing item is animated and moves when it is dropped onto the clothing item
-  - The person does a dance move when all of their clothing items are animated
+  Phase 3: Drill down data
+  - Allow a user to slice and dice the data with drop downs for gender, location, devide used
   
-  
-  
-  
-  A Note to the TA reviewing this - I am really torn about doing this project or doing a data visualization. I am really interested in the strava/ fitbit API. My other project idea was to look at the days people work out and show human tendencies to workout depending on if the miss monday, then miss monday and tuesday, then monday, tuesday and wednesday etc. I could build off that project by looking at how activity wanes throughout the month and then throughout the year. I chose this "paper doll" project because I thought it might be more unique, but I am still on the fence. Can you help me decide, having seen a lot more projects than I have? 
-  
+ 
