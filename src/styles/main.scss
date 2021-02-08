@@ -1,0 +1,17 @@
+#main{
+    background-color: green;
+    height: 200px;
+    width: 200px;
+}
+.container {
+  background: white;
+  height: 50vh;
+  width: 50vw;
+  border-radius: 15px;
+  margin-top: 15px;
+}
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
