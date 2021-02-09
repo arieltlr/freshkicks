@@ -1,0 +1,74 @@
+
+//HEADER
+
+#header {
+    @include flex(row, center, center);
+    height: 220px;
+    width: 90vw;
+    vertical-align: top;
+}
+.title-center {
+    width: 100vw;
+    text-align: center;
+}
+
+.title-container{
+    @include flex(column, center, space-evenly)
+}
+.se-info-container {
+    position: absolute;
+    top: 35px;
+    right: 30px;
+    text-align: right;
+    height: 150px;
+}
+.engineer-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.se-info {
+    text-decoration: none;
+    color: $text;
+    margin: 3px;
+}
+
+// BODY //
+
+#body {
+    width: 80vw;
+    @include flex(row, center, center)
+}
+#canvas-container {
+    // width: 50vw;
+    // height: 70vh;
+    border: 2px solid $blush;
+    margin: 5px;
+}
+.options-container {
+    width: 20vw;
+    height: 70vh;
+    border: solid 2px $palm;
+    margin: 5px;
+}
+.title {
+    height: 6vh;
+    // border: solid 2px $palm;
+    p {
+        font-size: 24px;
+        text-align: center;
+        vertical-align: center;
+        margin-top: 15px;
+    }
+}
+.options {
+    @include flex(column, center, space-between);
+    height: 80%;
+    margin-top: 8px;
+    div {
+        height: 150px;
+        width: 120px;
+        border-radius: 10px;
+        background-color: $sage;
+    }
+}

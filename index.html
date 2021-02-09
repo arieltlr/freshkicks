@@ -7,12 +7,59 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="./dist/main.css" />
     <script src="./dist/main.css"></script>
-    <title>Project Name</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+    <!-- <link rel="icon" type="image/png" href="/croissant_icon.png" /> -->
+    <title>Fresh Kicks</title>
 </head>
 
 <body>
+    
+    <div id="main">
+        <section id="header">
+            <div class="title-center">
+                <div class="title-container">
+                    <h1 class="title-header">Fresh Kicks</h1>
+                    <h3 class="sub-text" id="st1">Start by selecting a silouette to work with</h3>
+                    <h3 class="sub-text"id="st2">Drag and drop a pattern onto your silouette</h3>
+                </div>
+            </div>
+            <div class="se-info-container">
+                <div class="engineer-info">
+                    <a href="" class="se-info" id="link1">Made by Ariel Taylor</a>
+                    <a href="https://github.com/arieltlr"class="se-info" id="link1">Github</a>
+                    <a href="https://www.linkedin.com/in/taylorariel/" class="se-info" id="link2">LinkedIn</a>
+                    
+                </div>
+            </div>
+
+        </section>
+        <section id="body">
+            <div class="options-container">
+                <div class="title">
+                    <p class="option-text-left">Silouettes</p>
+                </div>
+                <div class="options">
+                    <div class="option1"></div>
+                    <div class="option2"></div>
+                    <div class="option3"></div>
+                </div>
+            </div>
+            <canvas id="canvas-container">
+            </canvas>
+            <div class="options-container">
+                <div class="title">
+                    <p class="option-text-right">Patterns</p>
+                </div>
+                <div class="options">
+                    <div c  lass="option1"></div>
+                    <div class="option2"></div>
+                    <div class="option3"></div>
+                </div>
+            </div>   
+        </section>
+    </div>
     <script src="./dist/main.js"></script>
-    <div id="main"></div>
 </body>
 
 </html>

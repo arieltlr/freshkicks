@@ -1,0 +1,17 @@
+$palm : #6F8E88;
+$sage: #A1C0BA;
+$light-blush: #F2DED7;
+$blush: #EAC6B8;
+$terra: #CF8562;
+$grey: #edf5f5;
+$near-white: #f7f8fa;
+$text: #292a2b;
+$font1: 'Questrial', sans-serif;
+
+
+@mixin flex($direction, $align, $justify) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: $align;
+    justify-content: $justify;
+}
