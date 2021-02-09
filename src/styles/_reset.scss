@@ -60,3 +60,13 @@ h3 {
 a {
     text-decoration: none;
 }
+button{
+	border: none;
+	background-color: white;
+	&:hover {
+		cursor: pointer;
+	}
+	&:focus {
+		outline: none;
+	}
+}

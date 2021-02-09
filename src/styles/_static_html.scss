@@ -40,8 +40,8 @@
     @include flex(row, center, center)
 }
 #canvas-container {
-    // width: 50vw;
-    // height: 70vh;
+    width: 50vw;
+    height: 70vh;
     border: 2px solid $blush;
     margin: 5px;
 }
@@ -65,10 +65,10 @@
     @include flex(column, center, space-between);
     height: 80%;
     margin-top: 8px;
-    div {
+    img {
         height: 150px;
         width: 120px;
         border-radius: 10px;
-        background-color: $sage;
+        background-color: none;
     }
 }
