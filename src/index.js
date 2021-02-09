@@ -1,6 +1,5 @@
 import "./styles/index.scss";
 import Canvas from "./scripts/canvas";
-import pattern1 from "../src/images/ab_mono_rb.png";
 import Circle from "./scripts/circles";
 import Pattern from './scripts/pattern_option1';
 
@@ -12,8 +11,9 @@ import Pattern from './scripts/pattern_option1';
 function drawPattern(){
     const canvas = new Canvas();
     canvas.createCanvas();
-    const source = "../src/images/ab_mono_rb.png"
-    // const pattern = new Pattern(canvas.ctx, source);
+    const source = '../../dist/images/ab_mono_rb.png';
+    const pattern = new Pattern(canvas.ctx, source);
+    pattern.placeImage();
     
 
 }

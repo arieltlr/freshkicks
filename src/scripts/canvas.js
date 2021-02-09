@@ -3,9 +3,9 @@ class Canvas {
     constructor(props) {
         this.canvasContainer = document.getElementById("canvas-container");
         this.canvas = document.createElement("canvas");
-        debugger
+        // debugger
         this.canvas.width = window.innerWidth * .50;
-        debugger
+        // debugger
         this.canvas.height = this.canvas.width/ 1.46;
         this.ctx = this.canvas.getContext("2d");
     }

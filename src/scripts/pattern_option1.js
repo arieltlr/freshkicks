@@ -1,4 +1,4 @@
-import stripe from '../images/ab_stripe.png';
+import rainbow from '../../dist/images/ab_mono_rb.png';
 
 class Pattern {
     constructor(ctx, src){
@@ -9,13 +9,14 @@ class Pattern {
         this.src = src;
     }
 
-    initialize(){
+    placeImage(){
         const img = new Image ();
-        this.img.src = this.src;
-        this.img.onload = function(){
+        img.src = this.src;
+        debugger
+        img.onload = () => {
+            debugger
             this.ctx.drawImage(img, 0, 0);
         }
-        
     }
 }
 
