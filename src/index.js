@@ -10,7 +10,7 @@ document.querySelector("#pattern3").addEventListener("click", drawPattern)
 
 function drawPattern(){
     debugger
-    clearCanvas();
+    removeCanvas();
     const canvas = new Canvas();
     let id;
     if (this.id === "pattern1"){
@@ -20,11 +20,22 @@ function drawPattern(){
     } else {
         id = '../../dist/images/ab_stripe.png';
     }
-    const pattern = new Pattern(canvas.ctx, id);
+    const x = 100;
+    const y = 100;
+    const pattern = new Pattern(canvas.ctx, id, [x, y]);
     pattern.placeImage();
     
+    // for (let i = 0; i < 10; i++){}
 
-}
+    function animatePattern(){
+        requestAnimationFrame(animatePattern);
+        // canvas.clearCanvas();
+        pattern.update();
+        
+    }
+    animatePattern();
+
+};
 
 
 function startCircles(){
@@ -57,7 +68,7 @@ animateCircles();
 
 // startCircles();
 
-function clearCanvas(){
+function removeCanvas(){
     debugger
     document.querySelector("canvas") ? 
     document.getElementById("canvas-container").removeChild(document.querySelector("canvas"))

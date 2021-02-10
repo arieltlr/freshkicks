@@ -12,5 +12,12 @@ class Canvas {
     // createCanvas() {
     //     this.canvasContainer.appendChild(this.canvas);
     // }
+
+    clearCanvas(){
+        debugger
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+    }
+
 }
 export default Canvas;
