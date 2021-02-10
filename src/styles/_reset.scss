@@ -63,8 +63,10 @@ a {
 button{
 	border: none;
 	background-color: white;
+	border-radius: 10%;
 	&:hover {
 		cursor: pointer;
+		background-color: $grey;
 	}
 	&:focus {
 		outline: none;
