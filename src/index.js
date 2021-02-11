@@ -9,7 +9,7 @@ document.querySelector("#pattern2").addEventListener("click", drawPattern)
 document.querySelector("#pattern3").addEventListener("click", drawPattern)
 
 function drawPattern(){
-    debugger
+    
     removeCanvas();
     const canvas = new Canvas();
     let id;
@@ -20,22 +20,36 @@ function drawPattern(){
     } else {
         id = '../../dist/images/ab_stripe.png';
     }
-    const x = 100;
-    const y = 100;
-    const pattern = new Pattern(canvas.ctx, id, [x, y]);
-    pattern.placeImage();
+    const width = 62;
+    const height = 77;
+    let x = canvas.canvas.width/2 - width/2;
+    let y = canvas.canvas.height/2 - height/2;
     
-    // for (let i = 0; i < 10; i++){}
-
-    function animatePattern(){
-        requestAnimationFrame(animatePattern);
-        // canvas.clearCanvas();
+    const pattern = new Pattern(canvas.ctx, id, [x, y], width, height);
+    pattern.img.onload = () => {
+            canvas.ctx.drawImage(pattern.img, x, y, width, height);
+        }
+ 
+   const animatePattern= () => {
+        canvas.clearCanvas();
         pattern.update();
-        
+        console.log(pattern.coords)
+        window.requestAnimationFrame(animatePattern);
+        if (pattern.angle > 90 || pattern.angle < -90){
+            pattern.reverseAnimation();
+        }
+        if (pattern.coords[0] > canvas.canvas.width){
+            pattern.coords = [canvas.canvas.width/2 - width/2, canvas.canvas.height/2 - height/2]
+        }
+        if (pattern.coords[1] > canvas.canvas.height){
+            pattern.coords = [canvas.canvas.width/2 - width/2, canvas.canvas.height/2 - height/2]
+        }
+      
     }
-    animatePattern();
+    window.requestAnimationFrame(animatePattern);
 
 };
+
 
 
 function startCircles(){
@@ -69,7 +83,7 @@ animateCircles();
 // startCircles();
 
 function removeCanvas(){
-    debugger
+    
     document.querySelector("canvas") ? 
     document.getElementById("canvas-container").removeChild(document.querySelector("canvas"))
     : null;
