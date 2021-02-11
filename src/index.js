@@ -8,6 +8,7 @@ document.querySelector("#pattern1").addEventListener("click", drawPattern)
 document.querySelector("#pattern2").addEventListener("click", drawPattern)
 document.querySelector("#pattern3").addEventListener("click", drawPattern)
 
+
 function drawPattern(){
     
     removeCanvas();
@@ -22,33 +23,57 @@ function drawPattern(){
     }
     const width = 62;
     const height = 77;
-    let x = canvas.canvas.width/2 - width/2;
-    let y = canvas.canvas.height/2 - height/2;
+    let x = 100;
+    let y = 0;
+    let rows = 5;
+    let cols = 5;
+    let colWidth = canvas.canvas.width / cols;
+    console.log(colWidth)
+    let rowHeight = canvas.canvas.height / rows;
+    let patternArray = [];
     
-    const pattern = new Pattern(canvas.ctx, id, [x, y], width, height);
-    pattern.img.onload = () => {
-            canvas.ctx.drawImage(pattern.img, x, y, width, height);
+        for (let i = 0; i < rows; i++){
+            for (let j = 0; j < cols; j++){
+                const rowCenter = rowHeight * i + rowHeight/2 - height;
+                const colCenter =  colWidth * j + colWidth/2 - width;
+                const pattern = new Pattern(canvas.ctx, id, [colCenter , rowCenter], width, height);
+                patternArray.push(pattern)
+                pattern.img.onload = () => {
+                    canvas.ctx.drawImage(pattern.img, colCenter, rowCenter, width, height);
+                }
+            }
         }
- 
+    console.log(patternArray)
+    let paused = false;
+    document.querySelector(".option1").addEventListener("click", ()=> {
+        paused = true;
+    })
+    document.querySelector("#animate").addEventListener("click", ()=> {
+        paused = false;
+    })
    const animatePattern= () => {
         canvas.clearCanvas();
-        pattern.update();
-        console.log(pattern.coords)
+        if (!paused) patternArray.forEach((pattern)=> pattern.update());
         window.requestAnimationFrame(animatePattern);
-        if (pattern.angle > 90 || pattern.angle < -90){
-            pattern.reverseAnimation();
-        }
-        if (pattern.coords[0] > canvas.canvas.width){
-            pattern.coords = [canvas.canvas.width/2 - width/2, canvas.canvas.height/2 - height/2]
-        }
-        if (pattern.coords[1] > canvas.canvas.height){
-            pattern.coords = [canvas.canvas.width/2 - width/2, canvas.canvas.height/2 - height/2]
-        }
+        patternArray.forEach((pattern) => {
+            if (pattern.idx >= pattern.coordArray.length -2){
+            // console.log(pattern.coordArray.length())
+            pattern.reverseIdx();
+            }
+            if (pattern.idx < 1){
+            pattern.reverseIdx();
+            }
+        });
+        
+        
       
     }
     window.requestAnimationFrame(animatePattern);
-
 };
+
+function startAnimation(){
+
+}
 
 
 
