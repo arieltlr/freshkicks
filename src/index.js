@@ -21,6 +21,18 @@ function drawPattern(){
     } else {
         id = '../../dist/images/ab_stripe.png';
     }
+    canvas.ctx.save()
+    canvas.ctx.fillRect(0, 0, canvas.canvas.width, canvas.canvas.height);
+    canvas.ctx.translate(canvas.canvas.width / 2, canvas.canvas.height / 2);
+
+    canvas.ctx.beginPath();
+    canvas.ctx.arc(o, 0, 60, 0, Math.PI *2, true);
+    canvas.ctx.clip();
+
+    canvas.ctx.fillStyle = '#fff';
+    canvas.ctx.fillRect(-this.canvasWidth / 2, -this.canvasHeight / 2, this.canvas.width, this.canvas.height);
+    canvas.ctx.restore()
+
     const width = 62;
     const height = 77;
     let x = 100;
@@ -43,7 +55,6 @@ function drawPattern(){
                 }
             }
         }
-    console.log(patternArray)
     let paused = false;
     document.querySelector(".option1").addEventListener("click", ()=> {
         paused = true;
@@ -63,17 +74,12 @@ function drawPattern(){
             if (pattern.idx < 1){
             pattern.reverseIdx();
             }
-        });
-        
-        
+        });  
       
     }
-    window.requestAnimationFrame(animatePattern);
+    // window.requestAnimationFrame(animatePattern);
 };
 
-function startAnimation(){
-
-}
 
 
 
