@@ -2,12 +2,20 @@ import "./styles/index.scss";
 import Canvas from "./scripts/canvas";
 import Circle from "./scripts/circles";
 import Pattern from './scripts/pattern_option1';
+import Clothes from './scripts/clothes';
 
 
 document.querySelector("#pattern1").addEventListener("click", drawPattern)
 document.querySelector("#pattern2").addEventListener("click", drawPattern)
 document.querySelector("#pattern3").addEventListener("click", drawPattern)
+document.querySelector("#shape2").addEventListener("click", drawShape)
 
+function drawShape() {
+    removeCanvas();
+    const canvas = new Canvas();
+    const dress = new Clothes(canvas.ctx, canvas.canvas.width, canvas.canvas.height)
+    dress.drawDress();
+}
 
 function drawPattern(){
     
@@ -22,16 +30,18 @@ function drawPattern(){
         id = '../../dist/images/ab_stripe.png';
     }
     canvas.ctx.save()
+    canvas.ctx.fillStyle = 'white';
     canvas.ctx.fillRect(0, 0, canvas.canvas.width, canvas.canvas.height);
-    canvas.ctx.translate(canvas.canvas.width / 2, canvas.canvas.height / 2);
 
     canvas.ctx.beginPath();
-    canvas.ctx.arc(o, 0, 60, 0, Math.PI *2, true);
+    const dress = new Clothes(canvas.ctx, canvas.canvas.width, canvas.canvas.height);
+    dress.drawDress()
+    // canvas.ctx.arc(canvas.canvas.width / 2, canvas.canvas.height / 2, 300, 0, Math.PI *2, true);
     canvas.ctx.clip();
 
-    canvas.ctx.fillStyle = '#fff';
-    canvas.ctx.fillRect(-this.canvasWidth / 2, -this.canvasHeight / 2, this.canvas.width, this.canvas.height);
-    canvas.ctx.restore()
+    canvas.ctx.fillStyle = 'white';
+    canvas.ctx.fillRect(0, 0, canvas.canvas.width, canvas.canvas.height);
+    
 
     const width = 62;
     const height = 77;
@@ -55,6 +65,7 @@ function drawPattern(){
                 }
             }
         }
+    
     let paused = false;
     document.querySelector(".option1").addEventListener("click", ()=> {
         paused = true;
@@ -77,7 +88,7 @@ function drawPattern(){
         });  
       
     }
-    // window.requestAnimationFrame(animatePattern);
+    window.requestAnimationFrame(animatePattern);
 };
 
 

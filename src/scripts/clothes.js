@@ -1,4 +1,3 @@
-import Pattern from './scripts/pattern_option1';
 
 class Clothes {
     constructor(ctx, canvasWidth, canvasHeight){
@@ -6,43 +5,32 @@ class Clothes {
         this.canvasWidth = canvasWidth;
         this.canvasHeight = canvasHeight;
     }
-    draw(){
-        this.ctx.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
-        this.ctx.translate(this.canvasWidth / 2, this.canvasHeight / 2);
-
+    drawDress(){
+        const cx = this.canvasWidth/2;
+        const cy = this.canvasHeight/2 + 50; 
+        this.ctx.save();
         this.ctx.beginPath();
-        this.ctx.arc(o, 0, 60, 0, Math.PI *2, true);
-        this.ctx.clip();
-
-        this.ctx.fillStyle = '#fff';
-        this.ctx.fillRect(-this.canvasWidth / 2, -this.canvasHeight / 2, this.canvas.width, this.canvas.height);
-
-        const width = 62;
-        const height = 77;
-        let x = 100;
-        let y = 0;
-        let rows = 5;
-        let cols = 5;
-        let colWidth = canvas.canvas.width / cols;
-        let rowHeight = canvas.canvas.height / rows;
-        let patternArray = [];
+        //left waist edge
+        this.ctx.moveTo(cx -90, cy - 50);
+        //left armpit
+        this.ctx.lineTo(cx- 125, cy - 180);
+        //creates armpit curce and goes to sleeve edge
+        this.ctx.quadraticCurveTo(cx - 125, cy - 185, cx - 175, cy - 200);
+        //Left side - up shoulder and to neckline. Control points creates shoulder
+        this.ctx.bezierCurveTo(cx - 160, cy - 260, cx - 140, cy-260, cx -100, cy - 270);
+        //Neckline
+        this.ctx.bezierCurveTo(cx - 80, cy - 210, cx + 80, cy- 210, cx  + 100, cy - 270);
+        //Right side - shoulder to neckline. Control points create shoulder.
+        this.ctx.bezierCurveTo(cx + 160, cy - 260, cx + 140, cy-260, cx + 175, cy - 200);
+        //Right side armpit and bottom of sleeve
+        this.ctx.quadraticCurveTo(cx + 125, cy - 185, cx + 125, cy - 180);
+        //right side of body
+        this.ctx.lineTo(cx + 90, cy - 50);
+        this.ctx.lineTo(cx + 90, cy - 50);
+        this.ctx.stroke();
         
-            for (let i = 0; i < rows; i++){
-                for (let j = 0; j < cols; j++){
-                    const rowCenter = rowHeight * i + rowHeight/2 - height;
-                    const colCenter =  colWidth * j + colWidth/2 - width;
-                    const pattern = new Pattern(canvas.ctx, id, [colCenter , rowCenter], width, height);
-                    patternArray.push(pattern)
-                    
-                    pattern.img.onload = () => {
-                        canvas.ctx.drawImage(pattern.img, colCenter, rowCenter, width, height);
-                    }
-            
-                }
-            }
-    
-        }
 
- }
-
- export default Clothes;
+    }
+        
+}
+export default Clothes;
