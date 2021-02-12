@@ -39,14 +39,45 @@ class Clothes {
         
 
     }
-    // drawPants(){
-    //     const cx = this.canvasWidth/2;
-    //     const cy = this.canvasHeight/2 + 50; 
-    //     this.ctx.save();
-    //     this.ctx.beginPath();
-    //     this.ctx.strokeStyle = '#6F8E88';
-    //     this.ctx.lineWidth = 7;
-    // }
+    drawJumpsuit(){
+        const cx = this.canvasWidth/2;
+        const cy = this.canvasHeight/2 + 50; 
+        this.ctx.save();
+        this.ctx.beginPath();
+        this.ctx.strokeStyle = '#CF8562';
+        this.ctx.lineWidth = 7;
+        this.ctx.moveTo(cx - 60, cy - 50);
+        //left armpit
+        this.ctx.lineTo(cx - 95, cy - 160);
+        //creates armpit curve and goes to sleeve edge
+        this.ctx.quadraticCurveTo(cx - 95, cy - 165, cx - 145, cy - 180);
+        //Left side - up shoulder and to neckline. Control points creates shoulder
+        this.ctx.bezierCurveTo(cx - 130, cy - 240, cx - 110, cy - 240, cx - 65, cy - 250);
+        //Neckline
+        this.ctx.bezierCurveTo(cx - 50, cy - 190, cx + 50, cy- 190, cx  + 65, cy - 250);
+        //Right side - shoulder to neckline. Control points create shoulder.
+        this.ctx.bezierCurveTo(cx + 130, cy - 240, cx + 110, cy - 240, cx + 145, cy - 180);
+        //Right side armpit and bottom of sleeve
+        this.ctx.quadraticCurveTo(cx + 95, cy - 165, cx + 95, cy - 160);
+        //right side of body
+        this.ctx.lineTo(cx + 60, cy - 50);
+        //down right leg
+        this.ctx.quadraticCurveTo(cx + 120, cy + 75, cx + 160, cy + 225);
+        //across leg hemline
+        this.ctx.quadraticCurveTo(cx + 150, cy + 230, cx + 70, cy + 225);
+        //up inner-right leg
+        this.ctx.lineTo(cx, cy +50);
+        //down inner left leg
+        this.ctx.lineTo(cx - 70, cy + 225);
+        //across left hem line
+        this.ctx.quadraticCurveTo(cx -150 , cy + 230, cx - 160, cy + 225);
+        //up left leg to waist
+        this.ctx.quadraticCurveTo(cx - 120, cy + 75, cx - 60, cy - 50);
+        this.ctx.stroke();
+
+
+
+    }
         
 }
 export default Clothes;

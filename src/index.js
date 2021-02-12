@@ -30,7 +30,6 @@ function drawPattern(){
     canvas.ctx.beginPath();
     const dress = new Clothes(canvas.ctx, canvas.canvas.width, canvas.canvas.height);
     dress.drawDress()
-    // canvas.ctx.arc(canvas.canvas.width / 2, canvas.canvas.height / 2, 300, 0, Math.PI *2, true);
     canvas.ctx.clip();
 
     canvas.ctx.fillStyle = 'white';
