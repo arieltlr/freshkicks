@@ -1,7 +1,7 @@
 import rainbow from '../../dist/images/ab_mono_rb.png';
 import Circle from './circles';
 
-class Pattern {
+class Rainbow {
     constructor(ctx, src, coords, width, height) {
         this.ctx = ctx;
         // this.width = width;
@@ -61,4 +61,4 @@ class Pattern {
     
 }
 
-export default Pattern;
+export default Rainbow;

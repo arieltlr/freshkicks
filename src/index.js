@@ -1,14 +1,16 @@
 import "./styles/index.scss";
 import Canvas from "./scripts/canvas";
 import Circle from "./scripts/circles";
-import Pattern from './scripts/pattern_option1';
+import Rainbow from './scripts/rainbow_pattern';
 import Clothes from './scripts/clothes';
+import Dots from './scripts/dot_pattern';
+import Stripe from './scripts/stripes'
 
 
 document.querySelector("#pattern1").addEventListener("click", drawPattern)
 document.querySelector("#pattern2").addEventListener("click", drawPattern)
 document.querySelector("#pattern3").addEventListener("click", drawPattern)
-document.querySelector("#shape2").addEventListener("click", drawShape)
+document.querySelector(".option1").addEventListener("click", drawShape)
 
 function drawShape() {
     removeCanvas();
@@ -21,14 +23,7 @@ function drawPattern(){
     
     removeCanvas();
     const canvas = new Canvas();
-    let id;
-    if (this.id === "pattern1"){
-        id = '../../dist/images/ab_mono_rb.png'
-    } else if (this.id === "pattern2"){
-        id = '../../dist/images/ab_flowers.png';
-    } else {
-        id = '../../dist/images/ab_stripe.png';
-    }
+   
     canvas.ctx.save()
     canvas.ctx.fillStyle = 'white';
     canvas.ctx.fillRect(0, 0, canvas.canvas.width, canvas.canvas.height);
@@ -41,24 +36,40 @@ function drawPattern(){
 
     canvas.ctx.fillStyle = 'white';
     canvas.ctx.fillRect(0, 0, canvas.canvas.width, canvas.canvas.height);
-    
-
     const width = 62;
     const height = 77;
     let x = 100;
     let y = 0;
-    let rows = 5;
-    let cols = 5;
+    let cols = 12;
+    let rows = 7;
+    if (this.id === "pattern2"){
+        cols = 15;
+        rows = 10;
+    }
+    if (this.id ==="pattern3"){
+        cols = 15;
+        rows = 10;
+    }
     let colWidth = canvas.canvas.width / cols;
-    console.log(colWidth)
     let rowHeight = canvas.canvas.height / rows;
     let patternArray = [];
-    
+
         for (let i = 0; i < rows; i++){
             for (let j = 0; j < cols; j++){
                 const rowCenter = rowHeight * i + rowHeight/2 - height;
                 const colCenter =  colWidth * j + colWidth/2 - width;
-                const pattern = new Pattern(canvas.ctx, id, [colCenter , rowCenter], width, height);
+                let id;
+                let pattern;
+                if (this.id === "pattern1"){
+                    id = '../../dist/images/ab_mono_rb.png'
+                    pattern = new Rainbow(canvas.ctx, id, [colCenter , rowCenter], width, height);
+                } else if (this.id === "pattern2"){
+                    id = '../../dist/images/ab_flowers.png';
+                    pattern = new Dots(canvas.ctx, id, [colCenter , rowCenter], width, height);
+                } else {
+                    id = '../../dist/images/ab_stripe.png';
+                    pattern = new Stripe (canvas.ctx, id, [colCenter , rowCenter], width, height);
+                }
                 patternArray.push(pattern)
                 pattern.img.onload = () => {
                     canvas.ctx.drawImage(pattern.img, colCenter, rowCenter, width, height);
@@ -66,17 +77,41 @@ function drawPattern(){
             }
         }
     
-    let paused = false;
-    document.querySelector(".option1").addEventListener("click", ()=> {
+    let paused = true;
+    document.querySelector("#shape2").addEventListener("click", ()=> {
         paused = true;
     })
     document.querySelector("#animate").addEventListener("click", ()=> {
-        paused = false;
+        if (this.id === 'pattern2'){
+            window.requestAnimationFrame(animateDots);
+        } else if (this.id === 'pattern1'){
+            window.requestAnimationFrame(animateRainbows);
+        } else {
+            window.requestAnimationFrame(animateStripes);
+        }
     })
-   const animatePattern= () => {
+    const animateStripes= () => {
+        // canvas.clearCanvas();
+        patternArray.forEach((pattern)=> pattern.update());
+        window.requestAnimationFrame(animateStripes);
+        patternArray.forEach((pattern) => {
+            if (pattern.coords[1] > 600 || pattern.coords[1] < 0){
+                pattern.reverseAnimation()
+            }
+        })
+        
+      
+    }
+    const animateDots= () => {
+        patternArray.forEach((pattern)=> pattern.update());
+        window.requestAnimationFrame(animateDots);
+        
+      
+    }
+    const animateRainbows= () => {
         canvas.clearCanvas();
-        if (!paused) patternArray.forEach((pattern)=> pattern.update());
-        window.requestAnimationFrame(animatePattern);
+        patternArray.forEach((pattern)=> pattern.update());
+        window.requestAnimationFrame(animateRainbows);
         patternArray.forEach((pattern) => {
             if (pattern.idx >= pattern.coordArray.length -2){
             // console.log(pattern.coordArray.length())
@@ -85,10 +120,9 @@ function drawPattern(){
             if (pattern.idx < 1){
             pattern.reverseIdx();
             }
-        });  
-      
+        });    
     }
-    window.requestAnimationFrame(animatePattern);
+    // if(!paused) window.requestAnimationFrame(animatePattern);
 };
 
 
