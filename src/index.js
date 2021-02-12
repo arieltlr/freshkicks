@@ -16,7 +16,7 @@ function drawShape() {
     removeCanvas();
     const canvas = new Canvas();
     const dress = new Clothes(canvas.ctx, canvas.canvas.width, canvas.canvas.height)
-    dress.drawJumpsuit();
+    dress.drawDress();
 }
 
 function drawPattern(){

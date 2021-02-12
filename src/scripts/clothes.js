@@ -66,7 +66,13 @@ class Clothes {
         //across leg hemline
         this.ctx.quadraticCurveTo(cx + 150, cy + 230, cx + 70, cy + 225);
         //up inner-right leg
-        this.ctx.lineTo(cx , cy + 225);
+        this.ctx.lineTo(cx, cy +50);
+        //down inner left leg
+        this.ctx.lineTo(cx - 70, cy + 225);
+        //across left hem line
+        this.ctx.quadraticCurveTo(cx -150 , cy + 230, cx - 160, cy + 225);
+        //up left leg to waist
+        this.ctx.quadraticCurveTo(cx - 120, cy + 75, cx - 60, cy - 50);
         this.ctx.stroke();
 
 
