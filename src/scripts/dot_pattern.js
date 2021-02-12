@@ -1,12 +1,13 @@
+import dots_img from '../images/ab_flowers.png';
+
 class Dots {
-    constructor(ctx, src, coords, width, height) {
+    constructor(ctx, coords, width, height) {
         this.ctx = ctx;
-        this.src = src;
         this.coords = coords;
         this.width = width;
         this.height = height;
         this.img = new Image();
-        this.img.src = this.src;
+        this.img.src = this.buildAssetPath(dots_img)
         this.animationDir = 1;
         this.animationIdx = 1;
         this.angle = 0;
@@ -32,6 +33,9 @@ class Dots {
     reverseAnimation() {
         this.animationDir *= -1;
   }
+   buildAssetPath(imgSrc) {
+        return `./dist/${imgSrc}`;
+    }
     
 }
 

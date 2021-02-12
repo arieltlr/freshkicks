@@ -1,18 +1,13 @@
 import rainbow_img from '../images/ab_mono_rb.png'; 
 
 class Rainbow {
-    constructor(ctx, src, coords, width, height) {
+    constructor(ctx, coords, width, height) {
         this.ctx = ctx;
-        // this.width = width;
-        // this.height = height;
-        // this.img = img;
-        this.src = src;
         this.coords = coords;
         this.width = width;
         this.height = height;
         this.img = new Image();
-        this.img.src = '../images/ab_mono_rb.png';
-        this.buildAssetPath(this.img.src)
+        this.img.src = this.buildAssetPath(rainbow_img)
         this.animationDir = 1;
         this.animationIdx = 1;
         this.angle = 0;
@@ -59,7 +54,7 @@ class Rainbow {
         this.animationDir *= -1;
     }
     buildAssetPath(imgSrc) {
-        return `../../dist/${imgSrc}`;
+        return `./dist/${imgSrc}`;
     }
     
 }

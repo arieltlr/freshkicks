@@ -1,6 +1,5 @@
 import "./styles/index.scss";
 import Canvas from "./scripts/canvas";
-import Circle from "./scripts/circles";
 import Rainbow from './scripts/rainbow_pattern';
 import Clothes from './scripts/clothes';
 import Dots from './scripts/dot_pattern';
@@ -63,11 +62,9 @@ function drawPattern(){
                 if (this.id === "pattern1"){
                     pattern = new Rainbow(canvas.ctx, [colCenter , rowCenter], width, height);
                 } else if (this.id === "pattern2"){
-                    id = '../../dist/images/ab_flowers.png';
-                    pattern = new Dots(canvas.ctx, id, [colCenter , rowCenter], width, height);
+                    pattern = new Dots(canvas.ctx, [colCenter , rowCenter], width, height);
                 } else {
-                    id = '../../dist/images/ab_stripe.png';
-                    pattern = new Stripe (canvas.ctx, id, [colCenter , rowCenter], width, height);
+                    pattern = new Stripe (canvas.ctx, [colCenter , rowCenter], width, height);
                 }
                 patternArray.push(pattern)
                 pattern.img.onload = () => {
@@ -114,41 +111,8 @@ function drawPattern(){
             }
         });    
     }
-    // if(!paused) window.requestAnimationFrame(animatePattern);
 };
 
-
-
-
-function startCircles(){
-    const canvas = new Canvas();
-    let circleArray = [];
-
-for (let i = 0; i < 10; i ++) {
-    let radius = 40;
-    let x = Math.random() * (canvas.canvas.width - radius * 2) + radius;
-    let y = Math.random() * (canvas.canvas.height - radius * 2) + radius;
-    let dy = (Math.random() -.5);
-    let dx = (Math.random() -.5);
-    console.log(x, y)
-    const circle1 = new Circle(canvas.ctx, canvas.canvas.width, canvas.canvas.height, x, y, dx, dy, radius);
-    circleArray.push(circle1)
-}
-console.log(circleArray)
-
-function animateCircles(){
-    requestAnimationFrame(animateCircles);
-    canvas.ctx.clearRect(0, 0, canvas.canvas.width, canvas.canvas.height);
-
-    for (let i = 0; i < circleArray.length; i ++){
-        circleArray[i].update()
-    }
-}
-animateCircles();
-
-}
-
-// startCircles();
 
 function removeCanvas(){
     
