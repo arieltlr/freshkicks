@@ -61,8 +61,7 @@ function drawPattern(){
                 let id;
                 let pattern;
                 if (this.id === "pattern1"){
-                    id = '../../dist/images/ab_mono_rb.png'
-                    pattern = new Rainbow(canvas.ctx, id, [colCenter , rowCenter], width, height);
+                    pattern = new Rainbow(canvas.ctx, [colCenter , rowCenter], width, height);
                 } else if (this.id === "pattern2"){
                     id = '../../dist/images/ab_flowers.png';
                     pattern = new Dots(canvas.ctx, id, [colCenter , rowCenter], width, height);
@@ -97,7 +96,7 @@ function drawPattern(){
         
       
     }
-    const animateDots= () => {
+    const animateDots = () => {
         patternArray.forEach((pattern)=> pattern.update());
         window.requestAnimationFrame(animateDots);
     }

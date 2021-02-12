@@ -1,5 +1,4 @@
-import rainbow from '../../dist/images/ab_mono_rb.png';
-import Circle from './circles';
+import rainbow_img from '../images/ab_mono_rb.png'; 
 
 class Rainbow {
     constructor(ctx, src, coords, width, height) {
@@ -12,7 +11,8 @@ class Rainbow {
         this.width = width;
         this.height = height;
         this.img = new Image();
-        this.img.src = this.src;
+        this.img.src = '../images/ab_mono_rb.png';
+        this.buildAssetPath(this.img.src)
         this.animationDir = 1;
         this.animationIdx = 1;
         this.angle = 0;
@@ -57,7 +57,10 @@ class Rainbow {
     }
     reverseAnimation() {
         this.animationDir *= -1;
-  }
+    }
+    buildAssetPath(imgSrc) {
+        return `../../dist/${imgSrc}`;
+    }
     
 }
 
