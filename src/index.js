@@ -76,11 +76,6 @@ function drawPattern(){
                 }
             }
         }
-    
-    let paused = true;
-    document.querySelector("#shape2").addEventListener("click", ()=> {
-        paused = true;
-    })
     document.querySelector("#animate").addEventListener("click", ()=> {
         if (this.id === 'pattern2'){
             window.requestAnimationFrame(animateDots);
@@ -105,8 +100,6 @@ function drawPattern(){
     const animateDots= () => {
         patternArray.forEach((pattern)=> pattern.update());
         window.requestAnimationFrame(animateDots);
-        
-      
     }
     const animateRainbows= () => {
         canvas.clearCanvas();

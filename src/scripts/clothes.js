@@ -39,14 +39,14 @@ class Clothes {
         
 
     }
-    drawPants(){
-        const cx = this.canvasWidth/2;
-        const cy = this.canvasHeight/2 + 50; 
-        this.ctx.save();
-        this.ctx.beginPath();
-        this.ctx.strokeStyle = '#6F8E88';
-        this.ctx.lineWidth = 7;
-    }
+    // drawPants(){
+    //     const cx = this.canvasWidth/2;
+    //     const cy = this.canvasHeight/2 + 50; 
+    //     this.ctx.save();
+    //     this.ctx.beginPath();
+    //     this.ctx.strokeStyle = '#6F8E88';
+    //     this.ctx.lineWidth = 7;
+    // }
         
 }
 export default Clothes;
