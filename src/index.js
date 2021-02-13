@@ -3,7 +3,9 @@ import Canvas from "./scripts/canvas";
 import Rainbow from './scripts/rainbow_pattern';
 import Clothes from './scripts/clothes';
 import Dots from './scripts/dot_pattern';
-import Stripe from './scripts/stripes'
+import Stripe from './scripts/stripes';
+import Arch from './scripts/rainbow_draw';
+
 
 
 document.querySelector("#pattern1").addEventListener("click", drawPattern)
@@ -41,8 +43,8 @@ function drawPattern(){
     const height = 77;
     let x = 100;
     let y = 0;
-    let cols = 12;
-    let rows = 7;
+    let cols = 10;
+    let rows = 15;
     if (this.id === "pattern2"){
         cols = 15;
         rows = 10;
@@ -62,15 +64,19 @@ function drawPattern(){
                 let id;
                 let pattern;
                 if (this.id === "pattern1"){
-                    pattern = new Rainbow(canvas.ctx, [colCenter , rowCenter], width, height);
+                    pattern = new Arch (canvas.ctx, [colCenter + i*j, rowCenter + i*j]);
                 } else if (this.id === "pattern2"){
                     pattern = new Dots(canvas.ctx, [colCenter , rowCenter], width, height);
                 } else {
                     pattern = new Stripe (canvas.ctx, [colCenter , rowCenter], width, height);
                 }
                 patternArray.push(pattern)
-                pattern.img.onload = () => {
-                    canvas.ctx.drawImage(pattern.img, colCenter, rowCenter, width, height);
+                if (pattern.img) {
+                        pattern.img.onload = () => {
+                        canvas.ctx.drawImage(pattern.img, colCenter, rowCenter, width, height);
+                    }
+                } else{
+                    pattern.drawRainbow()
                 }
             }
         }
@@ -78,18 +84,41 @@ function drawPattern(){
         if (this.id === 'pattern2'){
             window.requestAnimationFrame(animateDots);
         } else if (this.id === 'pattern1'){
-            window.requestAnimationFrame(animateRainbows);
+            window.requestAnimationFrame(animateStripeRainbows);
         } else {
             window.requestAnimationFrame(animateStripes);
         }
     })
+    const animateStripeRainbows= () => {
+        canvas.clearCanvas();
+        for(let i = 0; i < patternArray.length -1; i++){
+            if (i % 2 === 0){
+                patternArray[i].updateLeft();
+            }else {
+                patternArray[i].updateRight();
+            }
+        }
+        window.requestAnimationFrame(animateStripeRainbows);
+        patternArray.forEach((pattern)=> {
+            if (pattern.coords[1] > 600 || pattern.coords[1] < 0){
+                pattern.reverseAnimation()
+            }
+            if (pattern.coords[0]> 800 || pattern.coords[0] < 0){
+                pattern.reverseAnimation();
+            }
+        })
+        
+
+    }
+
+        
     const animateStripes= () => {
         // canvas.clearCanvas();
         patternArray.forEach((pattern)=> pattern.update());
         window.requestAnimationFrame(animateStripes);
         patternArray.forEach((pattern) => {
             if (pattern.coords[1] > 600 || pattern.coords[1] < 0){
-                pattern.reverseAnimation()
+                pattern.reverseAnimation();
             }
         })
         
