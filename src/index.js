@@ -9,13 +9,15 @@ import Stripe from './scripts/stripes'
 document.querySelector("#pattern1").addEventListener("click", drawPattern)
 document.querySelector("#pattern2").addEventListener("click", drawPattern)
 document.querySelector("#pattern3").addEventListener("click", drawPattern)
-document.querySelector(".option1").addEventListener("click", drawShape)
-
+document.querySelector("#option1").addEventListener("click", drawShape)
+document.querySelector("#option2").addEventListener("click", drawShape)
+let shape;
 function drawShape() {
     removeCanvas();
     const canvas = new Canvas();
-    const dress = new Clothes(canvas.ctx, canvas.canvas.width, canvas.canvas.height)
-    dress.drawDress();
+    const silouette = new Clothes(canvas.ctx, canvas.canvas.width, canvas.canvas.height);
+    this.id === "option1" ? silouette.drawDress() : silouette.drawJumpsuit();
+    shape = Boolean(silouette.dress)
 }
 
 function drawPattern(){
@@ -28,8 +30,9 @@ function drawPattern(){
     canvas.ctx.fillRect(0, 0, canvas.canvas.width, canvas.canvas.height);
 
     canvas.ctx.beginPath();
-    const dress = new Clothes(canvas.ctx, canvas.canvas.width, canvas.canvas.height);
-    dress.drawDress()
+    const silouette = new Clothes(canvas.ctx, canvas.canvas.width, canvas.canvas.height);
+    shape ? silouette.drawDress() : silouette.drawJumpsuit();
+    
     canvas.ctx.clip();
 
     canvas.ctx.fillStyle = 'white';

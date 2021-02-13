@@ -4,14 +4,18 @@ class Clothes {
         this.ctx = ctx;
         this.canvasWidth = canvasWidth;
         this.canvasHeight = canvasHeight;
+        this.jumpsuit = false;
+        this.dress = false;
     }
     drawDress(){
+        this.dress = true;
+        this.jumpsuit = false;
         const cx = this.canvasWidth/2;
         const cy = this.canvasHeight/2 + 50; 
         this.ctx.save();
         this.ctx.beginPath();
-        this.ctx.strokeStyle = '#6F8E88';
-        this.ctx.lineWidth = 7;
+        this.ctx.strokeStyle = '#292a2b';
+        this.ctx.lineWidth = 4;
         //left waist edge
         this.ctx.moveTo(cx - 60, cy - 50);
         //left armpit
@@ -40,12 +44,16 @@ class Clothes {
 
     }
     drawJumpsuit(){
+        console.log(this.dress);
+        console.log(this.jumpsuit)
+        this.dress = false;
+        this.jumpsuit = true;
         const cx = this.canvasWidth/2;
         const cy = this.canvasHeight/2 + 50; 
         this.ctx.save();
         this.ctx.beginPath();
-        this.ctx.strokeStyle = '#CF8562';
-        this.ctx.lineWidth = 7;
+        this.ctx.strokeStyle = '#292a2b';
+        this.ctx.lineWidth = 4;
         this.ctx.moveTo(cx - 60, cy - 50);
         //left armpit
         this.ctx.lineTo(cx - 95, cy - 160);

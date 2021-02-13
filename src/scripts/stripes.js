@@ -20,7 +20,7 @@ class Stripe {
 
     update() {
         let x = this.coords[0];
-        let y = this.coords[1] + 1 * this.animationDir;
+        let y = this.coords[1] + 1.5 * this.animationDir;
         this.coords = [x, y];       
         this.drawImage();
     }
