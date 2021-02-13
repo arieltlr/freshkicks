@@ -100,10 +100,10 @@ function drawPattern(){
         }
         window.requestAnimationFrame(animateStripeRainbows);
         patternArray.forEach((pattern)=> {
-            if (pattern.coords[1] > 600 || pattern.coords[1] < 0){
+            if (pattern.y > 600 || pattern.y < 0){
                 pattern.reverseAnimation()
             }
-            if (pattern.coords[0]> 800 || pattern.coords[0] < 0){
+            if (pattern.x> 800 || pattern.x < 0){
                 pattern.reverseAnimation();
             }
         })

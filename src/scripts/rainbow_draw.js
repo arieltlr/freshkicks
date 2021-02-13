@@ -5,11 +5,8 @@ class Arch {
         this.x = coords[0];
         this.y = coords[1];
         this.move = 1;
-        this.animationDir = 1;
-
-        
+        this.animationDir = 1;   
     }
-
     drawRainbow(){
         const cx = this.x;
         const cy = this.y;
