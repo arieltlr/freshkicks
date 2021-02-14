@@ -79,13 +79,13 @@ class Arch {
     }
     updateLeft(){
         this.x += -1 *this.animationDir;
-        this.y += 1 *this.animationDir;
+        // this.y += 1 *this.animationDir;
         this.drawRainbow()
 
     }
     updateRight(){
         this.x += 1 *this.animationDir;
-        this.y += -1 *this.animationDir;
+        // this.y += -1 *this.animationDir;
         this.drawRainbow()
    
     }
