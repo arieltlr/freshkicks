@@ -66,16 +66,21 @@
     height: 80%;
     margin-top: 8px;
     img {
-        height: 150px;
-        width: 120px;
+        height: 100px;
+        width: 90px;
         border-radius: 10px;
         background-color: none;
+        
     }
     #option1, #option2 {
         height: 150px;
         width: 120px;
         border-radius: 10px;
     }
+    #sil {
+            height: 160px;
+            width: 125px;
+        }
 }
 #animate{
     width: 150px;

@@ -11,6 +11,7 @@ import Arch from './scripts/rainbow_draw';
 document.querySelector("#pattern1").addEventListener("click", drawPattern)
 document.querySelector("#pattern2").addEventListener("click", drawPattern)
 document.querySelector("#pattern3").addEventListener("click", drawPattern)
+document.querySelector("#pattern4").addEventListener("click", drawPattern)
 document.querySelector("#option1").addEventListener("click", drawShape)
 document.querySelector("#option2").addEventListener("click", drawShape)
 let shape;
@@ -20,6 +21,8 @@ function drawShape() {
     const silouette = new Clothes(canvas.ctx, canvas.canvas.width, canvas.canvas.height);
     this.id === "option1" ? silouette.drawDress() : silouette.drawJumpsuit();
     shape = Boolean(silouette.dress)
+    // const rain = new Arch(canvas.ctx, [canvas.canvas.width/2, canvas.canvas.height/2])
+    // rain.drawRainbow()
 }
 
 function drawPattern(){
@@ -43,15 +46,15 @@ function drawPattern(){
     const height = 77;
     let x = 100;
     let y = 0;
-    let cols = 10;
-    let rows = 15;
-    if (this.id === "pattern2"){
+    let cols = 12;
+    let rows = 7;
+    if (this.id === "pattern2" || this.id === "pattern3"){
         cols = 15;
         rows = 10;
     }
-    if (this.id ==="pattern3"){
-        cols = 15;
-        rows = 10;
+    if (this.id ==="pattern4"){
+        cols = 8;
+        rows = 12;
     }
     let colWidth = canvas.canvas.width / cols;
     let rowHeight = canvas.canvas.height / rows;
@@ -59,16 +62,18 @@ function drawPattern(){
 
         for (let i = 0; i < rows; i++){
             for (let j = 0; j < cols; j++){
-                const rowCenter = rowHeight * i + rowHeight/2 - height;
-                const colCenter =  colWidth * j + colWidth/2 - width;
+                const rowCenter = rowHeight * i + rowHeight/2;
+                const colCenter =  colWidth * j + colWidth/2;
                 let id;
                 let pattern;
                 if (this.id === "pattern1"){
-                    pattern = new Arch (canvas.ctx, [colCenter + i*j, rowCenter + i*j]);
+                    pattern = new Rainbow (canvas.ctx, [colCenter, rowCenter] , width, height);
                 } else if (this.id === "pattern2"){
                     pattern = new Dots(canvas.ctx, [colCenter , rowCenter], width, height);
-                } else {
+                } else if (this.id === "pattern3") {
                     pattern = new Stripe (canvas.ctx, [colCenter , rowCenter], width, height);
+                } else {
+                    pattern = new Arch (canvas.ctx, [colCenter, rowCenter]);
                 }
                 patternArray.push(pattern)
                 if (pattern.img) {
@@ -83,12 +88,15 @@ function drawPattern(){
     document.querySelector("#animate").addEventListener("click", ()=> {
         if (this.id === 'pattern2'){
             window.requestAnimationFrame(animateDots);
-        } else if (this.id === 'pattern1'){
+        } else if (this.id === 'pattern4'){
             window.requestAnimationFrame(animateStripeRainbows);
+
+        } else if (this.id === 'pattern1'){
+            window.requestAnimationFrame(animateRainbows); 
         } else {
             window.requestAnimationFrame(animateStripes);
         }
-    })
+    });
     const animateStripeRainbows= () => {
         canvas.clearCanvas();
         for(let i = 0; i < patternArray.length -1; i++){
@@ -134,7 +142,6 @@ function drawPattern(){
         window.requestAnimationFrame(animateRainbows);
         patternArray.forEach((pattern) => {
             if (pattern.idx >= pattern.coordArray.length -2){
-            // console.log(pattern.coordArray.length())
             pattern.reverseIdx();
             }
             if (pattern.idx < 1){

@@ -14,6 +14,7 @@ class Clothes {
         const cy = this.canvasHeight/2 + 50; 
         this.ctx.save();
         this.ctx.beginPath();
+        this.ctx.lineCap = 'round';
         this.ctx.strokeStyle = '#292a2b';
         this.ctx.lineWidth = 4;
         //left waist edge
@@ -52,6 +53,7 @@ class Clothes {
         const cy = this.canvasHeight/2 + 50; 
         this.ctx.save();
         this.ctx.beginPath();
+        this.ctx.lineCap = 'round';
         this.ctx.strokeStyle = '#292a2b';
         this.ctx.lineWidth = 4;
         this.ctx.moveTo(cx - 60, cy - 50);
