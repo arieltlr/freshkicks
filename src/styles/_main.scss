@@ -12,3 +12,26 @@
     @include flex(column, center, flex-start);
     margin-bottom: 50px;
 }
+h1 {
+    font-size: 42px;
+	margin-bottom: 6px;
+}
+h3 {
+    font-size: 22px;
+	margin-top: 8px;
+}
+a {
+    text-decoration: none;
+}
+button{
+	border: none;
+	background-color: white;
+	border-radius: 10%;
+}
+button:hover{
+		cursor: pointer;
+		background-color: white;
+}
+button:focus{
+		outline: none;
+}

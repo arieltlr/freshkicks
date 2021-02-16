@@ -3,10 +3,11 @@
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code,
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt,
-b, u, i, center,
+small, strike, strong, sub, sup, tt, var, b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
@@ -18,8 +19,8 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
+	font-family: 'Questrial', sans-serif;
 	vertical-align: baseline;
-    font-family: 'Questrial', sans-serif;
 	color: $text;
 }
 /* HTML5 display-role reset for older browsers */
@@ -44,28 +45,4 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
-}
-
-h1 {
-    font-size: 42px;
-	margin-bottom: 6px;
-}
-h3 {
-    font-size: 22px;
-	margin-top: 8px;
-}
-a {
-    text-decoration: none;
-}
-button{
-	border: none;
-	background-color: white;
-	border-radius: 10%;
-	&:hover{
-		cursor: pointer;
-		background-color: white;
-	}
-	&:focus{
-		outline: none;
-	}
 }
