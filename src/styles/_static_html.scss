@@ -13,7 +13,7 @@
 }
 
 .title-container{
-    @include flex(column, center, space-evenly)
+    @include flex(column, center, space-evenly);
 }
 .se-info-container {
     position: absolute;
@@ -37,7 +37,7 @@
 
 #body {
     width: 80vw;
-    @include flex(row, center, center)
+    @include flex(row, center, center);
 }
 #canvas-container {
     width: 50vw;
@@ -53,7 +53,6 @@
 }
 .title {
     height: 6vh;
-    // border: solid 2px $palm;
     p {
         font-size: 24px;
         text-align: center;
