@@ -87,13 +87,17 @@ function drawPattern(){
         }
     document.querySelector("#animate").addEventListener("click", ()=> {
         if (this.id === 'pattern2'){
+            canvas.clearCanvas();
             window.requestAnimationFrame(animateDots);
         } else if (this.id === 'pattern4'){
+            canvas.clearCanvas();
             window.requestAnimationFrame(animateStripeRainbows);
 
         } else if (this.id === 'pattern1'){
+            canvas.clearCanvas();
             window.requestAnimationFrame(animateRainbows); 
         } else {
+            canvas.clearCanvas();
             window.requestAnimationFrame(animateStripes);
         }
     });
