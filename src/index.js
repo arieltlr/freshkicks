@@ -26,6 +26,10 @@ function drawShape() {
 }
 
 function drawPattern(){
+    window.cancelAnimationFrame(myReqSR);
+    window.cancelAnimationFrame(myReqDots);
+    window.cancelAnimationFrame(myReqRain);
+    window.cancelAnimationFrame(myReqStripe);
     
     removeCanvas();
     const canvas = new Canvas();
@@ -87,20 +91,33 @@ function drawPattern(){
         }
     document.querySelector("#animate").addEventListener("click", ()=> {
         if (this.id === 'pattern2'){
-            canvas.clearCanvas();
+            window.cancelAnimationFrame(myReqSR);
+            window.cancelAnimationFrame(myReqStripe);
+            window.cancelAnimationFrame(myReqRain);
+            console.log("past cancel requests")
             window.requestAnimationFrame(animateDots);
         } else if (this.id === 'pattern4'){
-            canvas.clearCanvas();
+            window.cancelAnimationFrame(myReqSR);
+            window.cancelAnimationFrame(myReqDots);
+            window.cancelAnimationFrame(myReqRain);
+            console.log("past cancel requests")
             window.requestAnimationFrame(animateStripeRainbows);
 
         } else if (this.id === 'pattern1'){
-            canvas.clearCanvas();
+            window.cancelAnimationFrame(myReqSR);
+            window.cancelAnimationFrame(myReqStripe);
+            window.cancelAnimationFrame(myReqDots);
+            console.log("past cancel requests")
             window.requestAnimationFrame(animateRainbows); 
         } else {
-            canvas.clearCanvas();
+            window.cancelAnimationFrame(myReqSR);
+            window.cancelAnimationFrame(myReqDots);
+            window.cancelAnimationFrame(myReqRain);
+            console.log("past cancel requests")
             window.requestAnimationFrame(animateStripes);
         }
     });
+    let myReqSR;
     const animateStripeRainbows= () => {
         canvas.clearCanvas();
         for(let i = 0; i < patternArray.length -1; i++){
@@ -110,7 +127,7 @@ function drawPattern(){
                 patternArray[i].updateRight();
             }
         }
-        window.requestAnimationFrame(animateStripeRainbows);
+        myReqSR = window.requestAnimationFrame(animateStripeRainbows);
         patternArray.forEach((pattern)=> {
             if (pattern.y > 1000 || pattern.y < 0){
                 pattern.reverseAnimation()
@@ -123,11 +140,11 @@ function drawPattern(){
 
     }
 
-        
+    let myReqStripe;  
     const animateStripes= () => {
         // canvas.clearCanvas();
         patternArray.forEach((pattern)=> pattern.update());
-        window.requestAnimationFrame(animateStripes);
+        myReqStripe = window.requestAnimationFrame(animateStripes);
         patternArray.forEach((pattern) => {
             if (pattern.coords[1] > 600 || pattern.coords[1] < 0){
                 pattern.reverseAnimation();
@@ -136,14 +153,16 @@ function drawPattern(){
         
       
     }
+    let myReqDots;
     const animateDots = () => {
         patternArray.forEach((pattern)=> pattern.update());
-        window.requestAnimationFrame(animateDots);
+        myReqDots = window.requestAnimationFrame(animateDots);
     }
+    let myReqRain;
     const animateRainbows= () => {
         canvas.clearCanvas();
         patternArray.forEach((pattern)=> pattern.update());
-        window.requestAnimationFrame(animateRainbows);
+        myReqRain = window.requestAnimationFrame(animateRainbows);
         patternArray.forEach((pattern) => {
             if (pattern.idx >= pattern.coordArray.length -2){
             pattern.reverseIdx();
