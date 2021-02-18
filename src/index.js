@@ -14,25 +14,35 @@ document.querySelector("#pattern3").addEventListener("click", drawPattern)
 document.querySelector("#pattern4").addEventListener("click", drawPattern)
 document.querySelector("#option1").addEventListener("click", drawShape)
 document.querySelector("#option2").addEventListener("click", drawShape)
+document.querySelector("#option3").addEventListener("click", drawShape)
+
+
+
 let shape;
+let canvas;
+let patternId;
+let patternArray;
 function drawShape() {
     removeCanvas();
-    const canvas = new Canvas();
+    canvas = new Canvas();
     const silouette = new Clothes(canvas.ctx, canvas.canvas.width, canvas.canvas.height);
-    this.id === "option1" ? silouette.drawDress() : silouette.drawJumpsuit();
-    shape = Boolean(silouette.dress)
-    // const rain = new Arch(canvas.ctx, [canvas.canvas.width/2, canvas.canvas.height/2])
-    // rain.drawRainbow()
+    if (this.id === "option1"){
+        silouette.drawDress()
+        shape = "dress"
+    } else if (this.id === "option2"){
+        silouette.drawJumpsuit();
+        shape = "jumpsuit"
+    } else{
+        silouette.drawOverall();
+        shape = "overall"
+    }
+   
 }
 
 function drawPattern(){
-    window.cancelAnimationFrame(myReqSR);
-    window.cancelAnimationFrame(myReqDots);
-    window.cancelAnimationFrame(myReqRain);
-    window.cancelAnimationFrame(myReqStripe);
-    
     removeCanvas();
-    const canvas = new Canvas();
+    canvas = new Canvas();
+    patternId = this.id;
    
     canvas.ctx.save()
     canvas.ctx.fillStyle = 'white';
@@ -40,7 +50,13 @@ function drawPattern(){
 
     canvas.ctx.beginPath();
     const silouette = new Clothes(canvas.ctx, canvas.canvas.width, canvas.canvas.height);
-    shape ? silouette.drawDress() : silouette.drawJumpsuit();
+    if (shape === "dress"){
+        silouette.drawDress()
+    } else if (shape === "jumpsuit"){
+        silouette.drawJumpsuit();
+    } else{
+        silouette.drawOverall();
+    }
     
     canvas.ctx.clip();
 
@@ -62,7 +78,7 @@ function drawPattern(){
     }
     let colWidth = canvas.canvas.width / cols;
     let rowHeight = canvas.canvas.height / rows;
-    let patternArray = [];
+    patternArray = [];
 
         for (let i = 0; i < rows; i++){
             for (let j = 0; j < cols; j++){
@@ -89,36 +105,37 @@ function drawPattern(){
                 }
             }
         }
-    document.querySelector("#animate").addEventListener("click", ()=> {
-        if (this.id === 'pattern2'){
-            window.cancelAnimationFrame(myReqSR);
-            window.cancelAnimationFrame(myReqStripe);
-            window.cancelAnimationFrame(myReqRain);
-            console.log("past cancel requests")
+    
+};
+
+
+function removeCanvas(){
+    window.cancelAnimationFrame(myReqSR);
+    window.cancelAnimationFrame(myReqStripe);
+    window.cancelAnimationFrame(myReqRain);
+    window.cancelAnimationFrame(myReqDots);
+    document.querySelector("canvas") ? 
+    document.getElementById("canvas-container").removeChild(document.querySelector("canvas"))
+    : null;
+    
+}
+
+document.querySelector("#animate").addEventListener("click", ()=> {
+        if (patternId === 'pattern2'){
             window.requestAnimationFrame(animateDots);
-        } else if (this.id === 'pattern4'){
-            window.cancelAnimationFrame(myReqSR);
-            window.cancelAnimationFrame(myReqDots);
-            window.cancelAnimationFrame(myReqRain);
-            console.log("past cancel requests")
+        } else if (patternId === 'pattern4'){
             window.requestAnimationFrame(animateStripeRainbows);
 
-        } else if (this.id === 'pattern1'){
-            window.cancelAnimationFrame(myReqSR);
-            window.cancelAnimationFrame(myReqStripe);
-            window.cancelAnimationFrame(myReqDots);
-            console.log("past cancel requests")
+        } else if (patternId === 'pattern1'){
             window.requestAnimationFrame(animateRainbows); 
         } else {
-            window.cancelAnimationFrame(myReqSR);
-            window.cancelAnimationFrame(myReqDots);
-            window.cancelAnimationFrame(myReqRain);
-            console.log("past cancel requests")
+            
             window.requestAnimationFrame(animateStripes);
         }
     });
-    let myReqSR;
-    const animateStripeRainbows= () => {
+
+let myReqSR;
+    function animateStripeRainbows () {
         canvas.clearCanvas();
         for(let i = 0; i < patternArray.length -1; i++){
             if (i % 2 === 0){
@@ -127,7 +144,6 @@ function drawPattern(){
                 patternArray[i].updateRight();
             }
         }
-        myReqSR = window.requestAnimationFrame(animateStripeRainbows);
         patternArray.forEach((pattern)=> {
             if (pattern.y > 1000 || pattern.y < 0){
                 pattern.reverseAnimation()
@@ -136,33 +152,30 @@ function drawPattern(){
                 pattern.reverseAnimation();
             }   
         })
-        
-
+        myReqSR = window.requestAnimationFrame(animateStripeRainbows);
     }
 
     let myReqStripe;  
-    const animateStripes= () => {
-        // canvas.clearCanvas();
+    function animateStripes() {
         patternArray.forEach((pattern)=> pattern.update());
-        myReqStripe = window.requestAnimationFrame(animateStripes);
+        
         patternArray.forEach((pattern) => {
             if (pattern.coords[1] > 600 || pattern.coords[1] < 0){
                 pattern.reverseAnimation();
             }
         })
-        
-      
+        myReqStripe = window.requestAnimationFrame(animateStripes);
     }
     let myReqDots;
-    const animateDots = () => {
+    function animateDots () {
         patternArray.forEach((pattern)=> pattern.update());
         myReqDots = window.requestAnimationFrame(animateDots);
     }
     let myReqRain;
-    const animateRainbows= () => {
+    function animateRainbows () {
         canvas.clearCanvas();
         patternArray.forEach((pattern)=> pattern.update());
-        myReqRain = window.requestAnimationFrame(animateRainbows);
+        
         patternArray.forEach((pattern) => {
             if (pattern.idx >= pattern.coordArray.length -2){
             pattern.reverseIdx();
@@ -171,14 +184,5 @@ function drawPattern(){
             pattern.reverseIdx();
             }
         });    
+        myReqRain = window.requestAnimationFrame(animateRainbows);
     }
-};
-
-
-function removeCanvas(){
-    
-    document.querySelector("canvas") ? 
-    document.getElementById("canvas-container").removeChild(document.querySelector("canvas"))
-    : null;
-    
-}

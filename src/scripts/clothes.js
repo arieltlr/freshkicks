@@ -6,6 +6,7 @@ class Clothes {
         this.canvasHeight = canvasHeight;
         this.jumpsuit = false;
         this.dress = false;
+        this.overall = false;
     }
     drawDress(){
         this.dress = true;
@@ -45,8 +46,6 @@ class Clothes {
 
     }
     drawJumpsuit(){
-        console.log(this.dress);
-        console.log(this.jumpsuit)
         this.dress = false;
         this.jumpsuit = true;
         const cx = this.canvasWidth/2;
@@ -84,8 +83,49 @@ class Clothes {
         //up left leg to waist
         this.ctx.quadraticCurveTo(cx - 120, cy + 75, cx - 60, cy - 50);
         this.ctx.stroke();
+    }
+    drawOverall(){
+        this.dress = false;
+        this.jumpsuit = false;
+        this.overall = true;
+        const cx = this.canvasWidth/2;
+        const cy = this.canvasHeight/2 + 50; 
+        this.ctx.save();
+        this.ctx.beginPath();
+        this.ctx.lineCap = 'round';
+        this.ctx.strokeStyle = '#292a2b';
+        this.ctx.lineWidth = 4;
+        //top left body
+        this.ctx.moveTo(cx - 90, cy - 130);
+        this.ctx.quadraticCurveTo(cx - 70, cy -165, cx - 70, cy - 190);
+        this.ctx.lineTo(cx - 65, cy - 190);
+        this.ctx.lineTo(cx - 65, cy - 240);
+        this.ctx.lineTo(cx - 55, cy - 240);
+        this.ctx.lineTo(cx - 55, cy - 190);
+        this.ctx.lineTo(cx + 55, cy - 190);
+        // top right body
+        this.ctx.lineTo(cx + 55, cy - 240);
+        this.ctx.lineTo(cx + 65, cy - 240);
+        this.ctx.lineTo(cx + 65, cy - 190);
+        this.ctx.lineTo(cx + 70, cy -190)
+        this.ctx.quadraticCurveTo(cx + 70, cy - 165, cx + 90, cy - 130);
+        this.ctx.quadraticCurveTo(cx + 87, cy - 125, cx + 85, cy - 100);
+        //right leg
+        this.ctx.quadraticCurveTo(cx + 82, cy - 130, cx + 120, cy + 225);
+        this.ctx.lineTo(cx + 40, cy + 232)
+        this.ctx.lineTo(cx + 5, cy + 20)
+        //crotch
+        this.ctx.quadraticCurveTo(cx, cy, cx -5, cy + 20);
+        this.ctx.lineTo(cx - 40, cy + 232);
+        //hem
+        this.ctx.lineTo(cx - 120, cy + 225);
+        //left leg
+        this.ctx.quadraticCurveTo(cx - 82, cy - 130, cx -85, cy - 100);
+        this.ctx.quadraticCurveTo(cx - 87, cy - 125, cx - 90, cy - 130);
 
-
+       
+        this.ctx.stroke();
+        
 
     }
         
