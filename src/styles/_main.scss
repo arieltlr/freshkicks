@@ -25,12 +25,18 @@ a {
 }
 button{
 	border: none;
-	background-color: white;
+	background-color: none;
 	border-radius: 10%;
+    margin: 0px;
+    height: 145px;
+    background-color: white;
+
 }
 button:hover{
 		cursor: pointer;
-		background-color: white;
+		background-color: none;
+        transform: scale(1.1);
+        background-color: white;
 }
 button:focus{
 		outline: none;
