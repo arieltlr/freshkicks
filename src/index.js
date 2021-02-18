@@ -129,7 +129,6 @@ document.querySelector("#animate").addEventListener("click", ()=> {
             window.cancelAnimationFrame(myReqRain);
             window.cancelAnimationFrame(myReqDots);
             animating = false;
-            console.log(animating)
         } else {
             if (patternId === 'pattern2'){
                 animating = true;
