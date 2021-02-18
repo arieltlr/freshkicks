@@ -114,23 +114,42 @@ function removeCanvas(){
     window.cancelAnimationFrame(myReqStripe);
     window.cancelAnimationFrame(myReqRain);
     window.cancelAnimationFrame(myReqDots);
+    document.querySelector("#animate").innerText = 'Animate'
+    animating = false;
     document.querySelector("canvas") ? 
     document.getElementById("canvas-container").removeChild(document.querySelector("canvas"))
     : null;
     
 }
-
+let animating;
 document.querySelector("#animate").addEventListener("click", ()=> {
-        if (patternId === 'pattern2'){
-            window.requestAnimationFrame(animateDots);
-        } else if (patternId === 'pattern4'){
-            window.requestAnimationFrame(animateStripeRainbows);
-
-        } else if (patternId === 'pattern1'){
-            window.requestAnimationFrame(animateRainbows); 
+        if (animating){
+            window.cancelAnimationFrame(myReqSR);
+            window.cancelAnimationFrame(myReqStripe);
+            window.cancelAnimationFrame(myReqRain);
+            window.cancelAnimationFrame(myReqDots);
+            animating = false;
+            console.log(animating)
         } else {
-            
-            window.requestAnimationFrame(animateStripes);
+            if (patternId === 'pattern2'){
+                animating = true;
+                window.requestAnimationFrame(animateDots);
+                document.querySelector("#animate").innerText = 'Pause'
+            } else if (patternId === 'pattern4'){
+                animating = true;
+                window.requestAnimationFrame(animateStripeRainbows);
+                document.querySelector("#animate").innerText = 'Pause'
+
+            } else if (patternId === 'pattern1'){
+                animating = true;
+                window.requestAnimationFrame(animateRainbows); 
+                document.querySelector("#animate").innerText = 'Pause'
+
+            } else {
+                animating = true;
+                window.requestAnimationFrame(animateStripes);
+                document.querySelector("#animate").innerText = 'Pause'
+            }
         }
     });
 

@@ -61,9 +61,9 @@ class Clothes {
         //creates armpit curve and goes to sleeve edge
         this.ctx.quadraticCurveTo(cx - 95, cy - 165, cx - 145, cy - 180);
         //Left side - up shoulder and to neckline. Control points creates shoulder
-        this.ctx.bezierCurveTo(cx - 130, cy - 240, cx - 110, cy - 240, cx - 65, cy - 250);
+        this.ctx.bezierCurveTo(cx - 130, cy - 240, cx - 110, cy - 240, cx - 35, cy - 250);
         //Neckline
-        this.ctx.bezierCurveTo(cx - 50, cy - 190, cx + 50, cy- 190, cx  + 65, cy - 250);
+        this.ctx.bezierCurveTo(cx - 30, cy - 190, cx + 40, cy- 190, cx  + 35, cy - 250);
         //Right side - shoulder to neckline. Control points create shoulder.
         this.ctx.bezierCurveTo(cx + 130, cy - 240, cx + 110, cy - 240, cx + 145, cy - 180);
         //Right side armpit and bottom of sleeve
@@ -71,15 +71,37 @@ class Clothes {
         //right side of body
         this.ctx.lineTo(cx + 60, cy - 50);
         //down right leg
-        this.ctx.quadraticCurveTo(cx + 120, cy + 75, cx + 160, cy + 225);
+        this.ctx.quadraticCurveTo(cx + 120, cy + 75, cx + 130, cy + 225);
         //across leg hemline
-        this.ctx.quadraticCurveTo(cx + 150, cy + 230, cx + 70, cy + 225);
-        //up inner-right leg
-        this.ctx.lineTo(cx, cy +50);
-        //down inner left leg
-        this.ctx.lineTo(cx - 70, cy + 225);
-        //across left hem line
-        this.ctx.quadraticCurveTo(cx -150 , cy + 230, cx - 160, cy + 225);
+        this.ctx.quadraticCurveTo(cx + 125, cy + 235, cx + 120, cy + 225);
+        this.ctx.quadraticCurveTo(cx + 115, cy + 235, cx + 110, cy + 225);
+        this.ctx.quadraticCurveTo(cx + 105, cy + 235, cx + 100, cy + 225);
+        this.ctx.quadraticCurveTo(cx + 95, cy + 235, cx + 90, cy + 225);
+        this.ctx.quadraticCurveTo(cx + 85, cy + 235, cx + 80, cy + 225);
+        this.ctx.quadraticCurveTo(cx + 75, cy + 235, cx + 70, cy + 225);
+        this.ctx.quadraticCurveTo(cx + 65, cy + 235, cx + 60, cy + 225);
+        this.ctx.quadraticCurveTo(cx + 55, cy + 235, cx + 50, cy + 225);
+        this.ctx.quadraticCurveTo(cx + 45, cy + 235, cx + 40, cy + 225);
+        this.ctx.quadraticCurveTo(cx + 35, cy + 235, cx + 30, cy + 225);
+        this.ctx.quadraticCurveTo(cx + 25, cy + 235, cx + 20, cy + 225);
+        //up inner right leg
+        this.ctx.quadraticCurveTo(cx, cy + 100, cx + 3, cy + 50);
+        //crotch
+        this.ctx.quadraticCurveTo(cx, cy + 20, cx + - 3, cy + 50);
+        //down left inner leg
+        this.ctx.quadraticCurveTo(cx, cy + 100, cx - 20, cy + 225);
+        //left hem
+        this.ctx.quadraticCurveTo(cx - 25, cy + 235, cx - 30, cy + 225);
+        this.ctx.quadraticCurveTo(cx - 35, cy + 235, cx - 40, cy + 225);
+        this.ctx.quadraticCurveTo(cx - 45, cy + 235, cx - 50, cy + 225);
+        this.ctx.quadraticCurveTo(cx - 55, cy + 235, cx - 60, cy + 225);
+        this.ctx.quadraticCurveTo(cx - 65, cy + 235, cx - 70, cy + 225);
+        this.ctx.quadraticCurveTo(cx - 75, cy + 235, cx - 80, cy + 225);
+        this.ctx.quadraticCurveTo(cx - 85, cy + 235, cx - 90, cy + 225);
+        this.ctx.quadraticCurveTo(cx - 95, cy + 235, cx - 100, cy + 225);
+        this.ctx.quadraticCurveTo(cx - 105, cy + 235, cx - 110, cy + 225);
+        this.ctx.quadraticCurveTo(cx - 115, cy + 235, cx - 120, cy + 225);
+        this.ctx.quadraticCurveTo(cx - 125, cy + 235, cx - 130, cy + 225);
         //up left leg to waist
         this.ctx.quadraticCurveTo(cx - 120, cy + 75, cx - 60, cy - 50);
         this.ctx.stroke();
